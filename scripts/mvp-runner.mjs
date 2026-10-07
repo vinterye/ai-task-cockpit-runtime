@@ -15,8 +15,81 @@ if (process.env.MVP_RUNNER_FAIL === '1') {
 }
 function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char])); }
 const stages = [
-  ['competitor', '01-research.md', 'raw-input', `# 原始输入记录\n\n${requirement}\n\n研究结论：Unknown。此 runner 没有调用研究 Agent 或访问竞品。`],
-  ['requirement', '02-requirement.md', 'formal-requirements', `# 本地运行验收草案\n\n原始需求：${requirement}\n\n本次实现范围：启动真实 Node process、保存 stdout/stderr、写入 HTML、交给 Master Controller 做证据审核。\n\n用户的完整产品需求尚未生成正式 PRD；专家审核：Unknown；Controller 决策来自 Runtime Review Event。`],
+  ['competitor', '01-research.md', 'raw-input', `# 竞品分析
+
+> 结构化基线：基于当前 AI Task Cockpit 的已确认产品范围生成。外部竞品网页/报告尚未接入，因此外部事实保留为“待补证据”，不冒充调研结论。
+
+## 分析概述
+本阶段用于确定任务驾驶舱的对象结构、执行链和总控审核边界。当前项目已确认的核心链路是：任务 → 阶段 → 节点 → Artifact → Master Controller → 状态与事件。
+
+## 研究对象
+- AI Task Cockpit：左侧阶段对象树，右侧 Markdown、HTML、图片或真实 Artifact 详情。
+- 对标维度：任务分解、阶段导航、运行事件、产物证据、审核回执。
+- 外部对象名单：待接入来源后补录；当前没有可验证的外部来源证据。
+
+## 核心发现
+- 顶部流程只承担七阶段进度，左侧结构树承担当前阶段对象导航。
+- 右侧必须以真实内容和证据为准，不能用“已完成”替代 Artifact、路径和事件。
+- 总控审核是 Runtime Gate，审核结果需要写回 Task、Node、Event 和 Artifact 快照。
+
+## 关键交互模式
+选择左侧对象后，右侧显示对应 Markdown/HTML/图片及 Artifact ID、路径、fingerprint、exists；点击运行详情可查看完整事件链。
+
+## 差异分析
+当前项目的可验证差异点是“真实执行证据 + Master Controller 决策 + 七阶段结构树”的组合。与外部竞品的事实对比待来源接入后补充，不能提前下结论。
+
+## 研究结论
+当前可确认的产品方向：统一“左树 → 右详情”框架，以 Runtime 事实层驱动页面；外部竞品结论状态为待补证据。
+
+## 对后续影响
+后续 Agent 输出必须同时提供结构化字段、Markdown/HTML 产物引用和证据状态；缺少来源时保持 blocked/unknown，不生成虚假事实。
+`],
+  ['requirement', '02-requirement.md', 'formal-requirements', `# 需求文档
+
+> 结构化基线：由当前项目需求与已实现 Runtime 事实整理。未确认的外部业务信息单独列入 Open Questions。
+
+## 目标与范围
+${requirement}
+
+范围包含：七阶段对象树、真实 Node 执行、stdout/stderr、Artifact 证据、Master Controller 审核、Runtime Event 持久化和刷新后回读。
+
+## 用户与场景
+- 项目负责人：按阶段查看结构化对象和右侧详情。
+- 执行 Agent：接收节点输入，返回结构化内容与真实产物。
+- Master Controller：读取执行证据并决定 approved、revision_required、blocked 或 needs_human。
+
+## 核心问题
+当前 UI 曾用 Unknown 代替缺少的结构化输出，导致用户无法判断是没有产物、没有接口还是前端没有读取到产物。
+
+## 用户主路径
+创建任务 → 运行当前节点 → 记录 stdout/stderr → 创建 Artifact → 请求审核 → Controller 决策 → 写回状态与 Event → 继续下一节点或返工。
+
+## 功能需求
+- 每个阶段返回 stage_id、node_id、status、structured_content、artifact_refs、evidence_refs、validation。
+- Artifact 返回 artifact_id、path、fingerprint、exists=true，并可通过详情接口读取内容。
+- Task、Node、Event 在页面刷新后保持同一事实状态。
+
+## 业务规则 / 异常
+- 无证据只能标记 Unknown/blocked，不得声明完成。
+- Controller 必须使用已登记 ID，不能写 human 作为总控身份。
+- 外部来源未接入时，竞品事实标记待补证据。
+
+## MVP 范围
+Must Have：真实单节点执行、Artifact 证据、Master Controller 审核、事件链、01/02 结构化文档基线。Later：多 Agent 并行、自动学习、多轮返工业务。
+
+## 验收标准
+Task completed；NODE-7 completed；完整 Event 链可回读；controller_called 独立存在；review_round=1、max_review_rounds=3；Artifact 的 exists/path/fingerprint/artifact_id 在 UI 可见；刷新后仍存在。
+
+## Open Questions
+- 外部竞品来源和抓取授权待确认。
+- Requirements Expert 的正式注册入口与多轮返工策略待接入。
+
+## Non-goals
+本轮不接 Requirements Expert 自动决策，不实现多 Agent 并行，不改变七阶段 UI 布局。
+
+## Requirement Coverage
+当前已覆盖：运行链、Artifact 证据、Controller Review、事件持久化、阶段对象树。外部竞品事实覆盖：待补证据。
+`],
   ['interaction', '03-interaction-spec.md', 'page-framework', '# 运行预览交互\n\n入口：真实 HTML preview。区域：任务、创建、产物、Review。\n用户动作：选择区域、刷新真实任务、创建验收任务、启动、批准。\n系统响应：调用本地 API，失败显示 HTTP 原因。\n状态来自后端，不以点击模拟完成。'],
   ['prototype', '04-prototype-spec.md', 'prototype-framework', '# 运行预览结构\n\n顶部：当前任务与状态。左侧：页面导航。主区：Task/Artifact/Review。\n该产物是 mvp-runner 生成的低保真运行预览，未经过 Prototype Agent 审核。'],
   ['ui_design', '05-ui-design.md', 'ui-spec', '# 低保真运行预览\n\n已生成四个可点击区域：任务详情、创建任务、Artifact、Review。\n字体：系统字体；间距：16/24px；反馈：API 状态与错误。\nBlocked/Failed 等产品状态覆盖未验证，不能声明完整覆盖。'],

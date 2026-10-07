@@ -1,0 +1,21 @@
+{
+  "schema_version": "competitor-evidence/v1",
+  "status": "not_run",
+  "competitors": ["Linear", "Notion", "Dify", "Codex"],
+  "evidence": [
+    {
+      "competitor": "Linear",
+      "source_type": "official",
+      "title": "Unknown",
+      "url": "",
+      "query": "AI task cockpit workflow and review",
+      "observed_at": "Unknown",
+      "claim": "Unknown",
+      "claim_type": "unknown",
+      "evidence_level": "unknown",
+      "status": "not_run",
+      "reason": "宿主尚未执行官网检索"
+    }
+  ],
+  "note": "正式运行时，每个竞品需要 official、github、youtube 三类来源行；本示例不作为研究结论。"
+}

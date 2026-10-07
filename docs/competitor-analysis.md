@@ -1,6 +1,6 @@
 # 01 竞品分析：AI 任务执行驾驶舱
 
-> 状态：`proposed`。本报告先把当前项目已有的产品判断结构化；外部来源矩阵仍需宿主补齐后，才能升级为 `ready`。
+> 状态：文档调研草案。已阅读下列官方文档；未进行产品登录体验、性能比较或完整能力评测。产品建议与来源事实分别标注。
 
 ## 分析概述
 
@@ -10,12 +10,12 @@
 
 | 对象 | 观察重点 | 证据状态 |
 |---|---|---|
-| Linear | 项目、任务、状态和审核信息的聚合方式 | `not_run`：待补官网 / GitHub / YouTube 来源矩阵 |
-| Notion | 文档结构、层级导航和详情阅读方式 | `not_run`：待补官网 / GitHub / YouTube 来源矩阵 |
-| Dify | 工作流节点、运行记录和产物回读方式 | `not_run`：待补官网 / GitHub / YouTube 来源矩阵 |
+| Linear | 项目、任务、状态和审核信息的聚合方式 | 官方文档已阅读；产品实测 not_run |
+| Notion | 文档结构、层级导航和详情阅读方式 | 官方文档已阅读；产品实测 not_run |
+| Dify | 工作流节点、运行记录和产物回读方式 | 官方文档已阅读；产品实测 not_run |
 | Codex / 本地 Agent 工作台 | Agent 调用、工具执行、Artifact 和审核链 | 本地项目文档与 Runtime 事件可回读 |
 
-## 当前项目核心发现
+## 核心发现
 
 1. 左侧应承担阶段对象结构树，右侧承担当前对象详情；流程进度保留在顶部。
 2. 真实价值在于 `Node → Artifact → Master Controller → decision → next node / revision`，而不是单纯显示阶段卡片。
@@ -49,3 +49,13 @@
 - `stage-agent-result/v1`：竞品结构化交接格式。
 - `docs/cockpit-api-v1.md`：Runtime API 契约。
 
+
+## 官方来源与可验证事实
+
+- Linear：项目聚合具有明确结果的 issues，项目概览包含描述、关联文档和里程碑。[Projects 官方文档](https://linear.app/docs/projects)。
+- Notion：通过页面内嵌子页面组织层级。[Subpage 官方文档](https://www.notion.com/en-gb/help/create-a-subpage)。
+- Dify：官方快速入门使用节点编排 AI 工作流。[Quick Start 官方文档](https://docs.dify.ai/en/quick-start)。
+
+## 对后续影响
+
+以下为本项目设计推论：借鉴 Linear 的项目与任务分层、Notion 的内容层级、Dify 的节点编排，将业务对象导航与执行进度分开。以上资料不能证明这些产品缺少总控审核，也不能证明本项目具有竞争优势。下一步验证本项目各节点的输入、输出和证据是否可追溯。

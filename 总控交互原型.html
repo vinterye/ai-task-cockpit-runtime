@@ -1835,7 +1835,7 @@
         };
         const pass1SectionMapping = {
             competitor: { overview:['分析概述'], subjects:['研究对象','竞品对象'], findings:['核心发现'], 'interaction-patterns':['关键交互模式'], 'difference-analysis':['差异分析','差异矩阵'], conclusion:['研究结论'], 'follow-up-impact':['对后续影响'], artifact:['阶段产物'] },
-            requirement: { overview:['需求总览'], 'goals-scope':['目标与范围','产品目标'], 'users-scenarios':['用户与场景'], 'core-problems':['核心问题'], 'user-path':['用户主路径'], functional:['功能需求'], rules:['业务规则 / 异常','业务规则','异常场景'], mvp:['MVP 范围','Must Have','Later','Out'], acceptance:['验收标准','Acceptance Criteria'], 'open-questions':['Open Questions'], 'non-goals':['Non-goals'], coverage:['Requirement Coverage'], artifact:['阶段产物'], 'requirement-overview':['产品目标','用户与场景','核心问题','用户主路径','主要约束'], 'target-scope':['目标与范围','产品目标'], 'users-scenarios':['用户与场景'], 'core-problems':['核心问题'], 'user-path':['用户主路径'], 'functional-requirements':['功能需求'], 'project-task-stage':['Project / Task / Stage'], workspace:['当前阶段工作区'], runtime:['Runtime'], 'controller-review':['总控审核','Review'], 'human-takeover':['人工接管'], 'business-rules':['业务规则','异常场景'], 'mvp-scope':['MVP 范围','Must Have','Later','Out'], 'acceptance-criteria':['验收标准','Acceptance Criteria'], 'open-questions':['Open Questions'], 'non-goals':['Non-goals'], 'requirement-coverage':['Requirement Coverage'], 'agent-routing':['Agent 流转'], 'stage-artifact':['阶段产物'] }
+            requirement: { overview:['需求总览','目标与范围','用户与场景','核心问题','用户主路径'], 'goals-scope':['目标与范围','产品目标'], 'users-scenarios':['用户与场景'], 'core-problems':['核心问题'], 'user-path':['用户主路径'], functional:['功能需求'], rules:['业务规则 / 异常','业务规则','异常场景'], mvp:['MVP 范围','Must Have','Later','Out'], acceptance:['验收标准','Acceptance Criteria'], 'open-questions':['Open Questions'], 'non-goals':['Non-goals'], coverage:['Requirement Coverage'], artifact:['阶段产物'], 'requirement-overview':['产品目标','用户与场景','核心问题','用户主路径','主要约束'], 'target-scope':['目标与范围','产品目标'], 'users-scenarios':['用户与场景'], 'core-problems':['核心问题'], 'user-path':['用户主路径'], 'functional-requirements':['功能需求'], 'project-task-stage':['Project / Task / Stage'], workspace:['当前阶段工作区'], runtime:['Runtime'], 'controller-review':['总控审核','Review'], 'human-takeover':['人工接管'], 'business-rules':['业务规则','异常场景'], 'mvp-scope':['MVP 范围','Must Have','Later','Out'], 'acceptance-criteria':['验收标准','Acceptance Criteria'], 'open-questions':['Open Questions'], 'non-goals':['Non-goals'], 'requirement-coverage':['Requirement Coverage'], 'agent-routing':['Agent 流转'], 'stage-artifact':['阶段产物'] }
         };
         function stageSchemaLabel(stageId, nodeId) {
             return (stageTreeSchemas[stageId] || []).find(item => item.id === nodeId)?.label || (pass1StageFlows[stageId] || []).find(item => item[0] === nodeId)?.[1] || nodeId;
@@ -1858,7 +1858,7 @@
             return event.status || event.action || 'unknown';
         }
         function pass1StatusLabel(status) {
-            return ({completed:'已完成',running:'正在进行',paused:'已暂停',waiting_review:'等待审核',blocked:'被阻塞',failed:'执行失败',pending:'未开始',queued:'未开始',unknown:'暂无信息'}[status] || '暂无信息');
+            return ({completed:'已完成',running:'正在进行',paused:'已暂停',waiting_review:'等待审核',blocked:'被阻塞',failed:'执行失败',pending:'未开始',queued:'未开始',ready:'内容可读',available:'内容可读',structured_baseline:'项目草案',unknown:'暂无信息'}[status] || '暂无信息');
         }
         function stageTreeItems(stageId, task) {
             if (stageId === 'competitor' || stageId === 'requirement') {
@@ -1910,7 +1910,7 @@
             openStageCardDrawer(stageId, cardId, drawerMode);
         }
         function stageTreeStatus(task, stageId, item) {
-            return item.kind === 'document' ? (item.id === 'all' ? (getWorkflowStage(task, stageId)?.status || 'unknown') : stageNodeStatus(task, stageId, item.id)) : workflowCardStatus(task, stageId, item.id);
+            return item.kind === 'document' && item.backendNode?.content_status && item.backendNode.content_status !== 'unknown' ? item.backendNode.content_status : item.kind === 'document' ? (item.id === 'all' ? (getWorkflowStage(task, stageId)?.status || 'unknown') : stageNodeStatus(task, stageId, item.id)) : workflowCardStatus(task, stageId, item.id);
         }
         function toggleStageNode(stageId, nodeId) {
             const key = `${stageId}:${nodeId}`;
@@ -2004,12 +2004,13 @@
         function renderPass1DocumentArtifact(stageId, task, viewNode) {
             const artifact = (task.artifacts || []).find(item => (item.stage || item.stage_id) === stageId && item.kind !== 'preview');
             const nodes = (task.documents?.nodes || []).filter(node => node.stage_id === stageId);
-            const keys = [...(pass1SectionMapping[stageId]?.[viewNode] || []), viewNode];
+            const selectedDocument = nodes.find(node => node.section_id === viewNode || node.id === viewNode);
+            const keys = [...(pass1SectionMapping[stageId]?.[viewNode] || []), viewNode, selectedDocument?.title].filter(Boolean);
             const nodeMatch = viewNode === 'all' ? nodes : nodes.filter(node => keys.includes(node.section_id) || keys.includes(node.category) || keys.includes(node.title));
             const realContent = artifact?.content || artifact?.markdown || artifact?.body || '';
             const richArtifact = artifact && artifact.exists === true && (artifact.preview_url || artifact.content_url || artifact.content_type || artifact.mime_type) && (viewNode === 'all' || viewNode === 'artifact') ? renderStageArtifactContent(artifact, stageId === 'competitor' ? '竞品研究报告' : '正式需求文档') : '';
             const sectionContent = markdownSectionContent(realContent, keys);
-            const nodeContent = nodeMatch.map(node => node.content?.markdown || node.content?.body || node.content?.summary || '').filter(Boolean).join('\n\n');
+            const nodeContent = nodeMatch.map(node => node.content?.markdown || node.content?.body || node.content?.summary || (node.content && Object.keys(node.content).length ? JSON.stringify(node.content, null, 2) : '')).filter(Boolean).join('\n\n');
             const isWholeArtifact = viewNode === 'all' || viewNode === 'artifact' || viewNode === 'stage-artifact';
             const selectedContent = isWholeArtifact ? realContent : (sectionContent || nodeContent);
             const body = (isWholeArtifact ? richArtifact : '') || (selectedContent ? `<pre class="whitespace-pre-wrap break-words text-xs leading-relaxed text-slate-700">${escapeHtml(selectedContent)}</pre>` : `<div class="text-xs text-slate-500">Unknown / 尚无「${escapeHtml(stageSchemaLabel(stageId, viewNode))}」的真实内容</div>`);

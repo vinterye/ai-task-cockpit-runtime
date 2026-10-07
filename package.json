@@ -1,0 +1,11 @@
+{
+  "name": "ai-task-cockpit-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs",
+    "test": "node --test tests/controller-review-rounds.test.mjs tests/stage-worker-runtime.test.mjs tests/requirements-gate-contract.test.mjs"
+  }
+}

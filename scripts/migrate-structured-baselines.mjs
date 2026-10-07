@@ -88,21 +88,44 @@ Task completed；NODE-7 completed；完整 Event 链可回读；controller_calle
 `;
 }
 
+function reconcileDocumentNodes(task, stage, artifact) {
+  const nodes = task.documents?.nodes;
+  if (!Array.isArray(nodes)) return 0;
+  let count = 0;
+  for (const node of nodes) {
+    if (node.stage_id !== stage) continue;
+    node.content_status = 'structured_baseline';
+    node.validation = { status: 'ready', missing: [], unknown: ['external_evidence'] };
+    node.evidence_refs = [artifact.path];
+    node.artifact_refs = [artifact.artifact_id].filter(Boolean);
+    node.updated_at = now();
+    count++;
+  }
+  return count;
+}
+
 const state = JSON.parse(await readFile(statePath, 'utf8'));
 let repaired = 0;
+let nodesReconciled = 0;
 for (const project of state.projects || []) for (const task of project.tasks || []) {
-  for (const artifact of task.artifacts || []) {
+  const artifacts = Array.isArray(task.artifacts) ? task.artifacts : Object.values(task.artifacts || {});
+  for (const artifact of artifacts) {
     if (artifact.producer !== 'mvp-runner' || !['competitor', 'requirement'].includes(artifact.stage)) continue;
     const file = path.resolve(root, artifact.path);
     let old;
     try { old = await readFile(file, 'utf8'); } catch { continue; }
-    if (!/Unknown|尚未生成正式 PRD|没有调用研究 Agent/.test(old)) continue;
-    const content = artifact.stage === 'competitor' ? competitor(task.requirement || task.name || task.id) : requirement(task.requirement || task.name || task.id);
-    await writeFile(file, content, 'utf8');
-    artifact.status = 'structured_baseline';
-    artifact.validation = { status: 'ready', source: 'project_runtime_baseline', external_evidence: 'pending' };
-    artifact.fingerprint = hash(content);
-    artifact.evidence_refs = [artifact.path];
+    const legacy = /Unknown|尚未生成正式 PRD|没有调用研究 Agent/.test(old);
+    if (legacy) {
+      const content = artifact.stage === 'competitor' ? competitor(task.requirement || task.name || task.id) : requirement(task.requirement || task.name || task.id);
+      await writeFile(file, content, 'utf8');
+      artifact.status = 'structured_baseline';
+      artifact.validation = { status: 'ready', source: 'project_runtime_baseline', external_evidence: 'pending' };
+      artifact.fingerprint = hash(content);
+      artifact.evidence_refs = [artifact.path];
+      repaired++;
+    }
+    if (artifact.status === 'structured_baseline') nodesReconciled += reconcileDocumentNodes(task, artifact.stage, artifact);
+    if (!legacy) continue;
     task.events ||= [];
     if (!task.events.some(event => event.action === 'artifact_reconciled' && event.path === artifact.path)) task.events.push({
       at: now(), type: 'artifact', kind: 'artifact', action: 'artifact_reconciled', status: 'present',
@@ -110,8 +133,7 @@ for (const project of state.projects || []) for (const task of project.tasks || 
       exists: true, fingerprint: artifact.fingerprint, reason: '将旧 Unknown 草稿替换为项目结构化基线；外部事实仍待证据',
       producer: 'runtime-baseline-migration'
     });
-    repaired++;
   }
 }
 await writeFile(statePath, JSON.stringify(state, null, 2) + '\n', 'utf8');
-console.log(JSON.stringify({ repaired, state: statePath }));
+console.log(JSON.stringify({ repaired, nodesReconciled, state: statePath }));

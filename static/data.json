@@ -1,0 +1,1306 @@
+{
+  "projects": [
+    {
+      "id": "DEMO-PROJECT",
+      "name": "AI Task Cockpit 静态演示",
+      "status": "completed",
+      "currentStage": "testing",
+      "tasks": [
+        {
+          "id": "DEMO-TASK",
+          "name": "AI Task Cockpit 静态演示",
+          "status": "completed",
+          "currentStage": "testing",
+          "viewStage": "competitor",
+          "reviewer": "master-controller-v1",
+          "review_round": 1,
+          "max_review_rounds": 3,
+          "decision": "approved",
+          "nodes": [
+            {
+              "id": "NODE-1",
+              "stage": "competitor",
+              "status": "completed"
+            },
+            {
+              "id": "NODE-2",
+              "stage": "requirement",
+              "status": "completed"
+            },
+            {
+              "id": "NODE-3",
+              "stage": "interaction",
+              "status": "completed"
+            },
+            {
+              "id": "NODE-4",
+              "stage": "prototype",
+              "status": "completed"
+            },
+            {
+              "id": "NODE-5",
+              "stage": "ui_design",
+              "status": "completed"
+            },
+            {
+              "id": "NODE-6",
+              "stage": "development",
+              "status": "completed"
+            },
+            {
+              "id": "NODE-7",
+              "stage": "testing",
+              "status": "completed"
+            }
+          ],
+          "events": [
+            {
+              "at": "2026-10-07T00:00:00.000Z",
+              "action": "node_started",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:01.000Z",
+              "action": "node_stdout",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:02.000Z",
+              "action": "artifact_created",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:03.000Z",
+              "action": "node_finished",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:04.000Z",
+              "action": "review_requested",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:05.000Z",
+              "action": "controller_called",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "master-controller-v1",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:06.000Z",
+              "action": "controller_decision_received",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:07.000Z",
+              "action": "review_applied",
+              "type": "runtime",
+              "status": "present",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            },
+            {
+              "at": "2026-10-07T00:00:08.000Z",
+              "action": "task_completed",
+              "type": "runtime",
+              "status": "completed",
+              "task_id": "DEMO-TASK",
+              "stage_id": "testing",
+              "node_id": "testing.overview",
+              "execution_id": "RUN-DEMO",
+              "agent_id": "static-demo",
+              "review_round": 1,
+              "max_review_rounds": 3
+            }
+          ],
+          "artifacts": {
+            "competitor": {
+              "stage": "competitor",
+              "card_id": "overview",
+              "path": "static/artifacts/competitor.md",
+              "local_path": "static/artifacts/competitor.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-competitor",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-competitor",
+              "exists": true,
+              "content": "# 分析概述\n\n统一左树到右详情，所有结论以真实 Artifact 和证据为准。"
+            },
+            "requirement": {
+              "stage": "requirement",
+              "card_id": "overview",
+              "path": "static/artifacts/requirement.md",
+              "local_path": "static/artifacts/requirement.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-requirement",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-requirement",
+              "exists": true,
+              "content": "# 需求总览\n\n目标是让真实 Node 执行、Artifact 证据和总控审核形成可回读闭环。"
+            },
+            "interaction": {
+              "stage": "interaction",
+              "card_id": "overview",
+              "path": "static/artifacts/interaction.md",
+              "local_path": "static/artifacts/interaction.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-interaction",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-interaction",
+              "exists": true,
+              "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+            },
+            "prototype": {
+              "stage": "prototype",
+              "card_id": "overview",
+              "path": "static/artifacts/prototype.md",
+              "local_path": "static/artifacts/prototype.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-prototype",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-prototype",
+              "exists": true,
+              "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+            },
+            "ui_design": {
+              "stage": "ui_design",
+              "card_id": "overview",
+              "path": "static/artifacts/ui_design.md",
+              "local_path": "static/artifacts/ui_design.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-ui_design",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-ui_design",
+              "exists": true,
+              "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+            },
+            "development": {
+              "stage": "development",
+              "card_id": "overview",
+              "path": "static/artifacts/development.md",
+              "local_path": "static/artifacts/development.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-development",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-development",
+              "exists": true,
+              "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+            },
+            "testing": {
+              "stage": "testing",
+              "card_id": "overview",
+              "path": "static/artifacts/testing.md",
+              "local_path": "static/artifacts/testing.md",
+              "kind": "document",
+              "status": "structured_baseline",
+              "artifact_id": "artifact-demo-testing",
+              "producer": "static-demo",
+              "fingerprint": "sha256:demo-testing",
+              "exists": true,
+              "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+            }
+          },
+          "artifact": {
+            "stage": "testing",
+            "card_id": "overview",
+            "path": "static/artifacts/testing.md",
+            "local_path": "static/artifacts/testing.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-testing",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-testing",
+            "exists": true,
+            "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+          },
+          "documents": {
+            "schema_version": "stage-document/v1",
+            "source": "static-demo",
+            "nodes": [
+              {
+                "id": "competitor.overview",
+                "stage_id": "competitor",
+                "section_id": "overview",
+                "title": "分析概述",
+                "parent_id": null,
+                "depth": 0,
+                "status": "pending",
+                "content_status": "structured_baseline",
+                "content": {
+                  "summary": "# 分析概述\n\n统一左树到右详情，所有结论以真实 Artifact 和证据为准。"
+                },
+                "artifact_refs": [
+                  "artifact-demo-competitor"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/competitor.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "competitor.subjects",
+                "stage_id": "competitor",
+                "section_id": "subjects",
+                "title": "研究对象",
+                "parent_id": "competitor.overview",
+                "depth": 1,
+                "status": "pending",
+                "content_status": "structured_baseline",
+                "content": {
+                  "summary": "## 研究对象\n\n当前演示聚焦任务、阶段、节点、Artifact 与 Master Controller。"
+                },
+                "artifact_refs": [
+                  "artifact-demo-competitor"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/competitor.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "competitor.findings",
+                "stage_id": "competitor",
+                "section_id": "findings",
+                "title": "核心发现",
+                "parent_id": "competitor.overview",
+                "depth": 1,
+                "status": "pending",
+                "content_status": "structured_baseline",
+                "content": {
+                  "summary": "## 核心发现\n\n顶部展示阶段进度，左侧承担对象导航，右侧展示结构化内容。"
+                },
+                "artifact_refs": [
+                  "artifact-demo-competitor"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/competitor.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "requirement.overview",
+                "stage_id": "requirement",
+                "section_id": "overview",
+                "title": "需求总览",
+                "parent_id": null,
+                "depth": 0,
+                "status": "pending",
+                "content_status": "structured_baseline",
+                "content": {
+                  "summary": "# 需求总览\n\n目标是让真实 Node 执行、Artifact 证据和总控审核形成可回读闭环。"
+                },
+                "artifact_refs": [
+                  "artifact-demo-requirement"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/requirement.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "requirement.goals-scope",
+                "stage_id": "requirement",
+                "section_id": "goals-scope",
+                "title": "目标与范围",
+                "parent_id": "requirement.overview",
+                "depth": 1,
+                "status": "pending",
+                "content_status": "structured_baseline",
+                "content": {
+                  "summary": "## 目标与范围\n\n覆盖七阶段对象树、Runtime 事件、Artifact 证据和 Master Controller 决策。"
+                },
+                "artifact_refs": [
+                  "artifact-demo-requirement"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/requirement.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "requirement.functional",
+                "stage_id": "requirement",
+                "section_id": "functional",
+                "title": "功能需求",
+                "parent_id": "requirement.overview",
+                "depth": 1,
+                "status": "pending",
+                "content_status": "structured_baseline",
+                "content": {
+                  "summary": "## 功能需求\n\n每个节点返回结构化内容、Artifact 引用和验证状态。"
+                },
+                "artifact_refs": [
+                  "artifact-demo-requirement"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/requirement.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "interaction.overview",
+                "stage_id": "interaction",
+                "section_id": "overview",
+                "title": "03 交互设计",
+                "parent_id": null,
+                "depth": 0,
+                "status": "completed",
+                "content_status": "ready",
+                "content": {
+                  "summary": "静态演示内容"
+                },
+                "artifact_refs": [
+                  "artifact-demo-interaction"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/interaction.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "prototype.overview",
+                "stage_id": "prototype",
+                "section_id": "overview",
+                "title": "04 原型",
+                "parent_id": null,
+                "depth": 0,
+                "status": "completed",
+                "content_status": "ready",
+                "content": {
+                  "summary": "静态演示内容"
+                },
+                "artifact_refs": [
+                  "artifact-demo-prototype"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/prototype.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "ui_design.overview",
+                "stage_id": "ui_design",
+                "section_id": "overview",
+                "title": "05 UI 设计",
+                "parent_id": null,
+                "depth": 0,
+                "status": "completed",
+                "content_status": "ready",
+                "content": {
+                  "summary": "静态演示内容"
+                },
+                "artifact_refs": [
+                  "artifact-demo-ui_design"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/ui_design.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "development.overview",
+                "stage_id": "development",
+                "section_id": "overview",
+                "title": "06 开发",
+                "parent_id": null,
+                "depth": 0,
+                "status": "completed",
+                "content_status": "ready",
+                "content": {
+                  "summary": "静态演示内容"
+                },
+                "artifact_refs": [
+                  "artifact-demo-development"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/development.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              },
+              {
+                "id": "testing.overview",
+                "stage_id": "testing",
+                "section_id": "overview",
+                "title": "07 测试验收",
+                "parent_id": null,
+                "depth": 0,
+                "status": "completed",
+                "content_status": "ready",
+                "content": {
+                  "summary": "静态演示内容"
+                },
+                "artifact_refs": [
+                  "artifact-demo-testing"
+                ],
+                "evidence_refs": [
+                  "static/artifacts/testing.md"
+                ],
+                "validation": {
+                  "status": "ready",
+                  "missing": [],
+                  "unknown": []
+                }
+              }
+            ]
+          },
+          "stages": [
+            {
+              "id": "competitor",
+              "status": "completed",
+              "label": "01 竞品分析"
+            },
+            {
+              "id": "requirement",
+              "status": "completed",
+              "label": "02 需求文档"
+            },
+            {
+              "id": "interaction",
+              "status": "completed",
+              "label": "03 交互设计"
+            },
+            {
+              "id": "prototype",
+              "status": "completed",
+              "label": "04 原型"
+            },
+            {
+              "id": "ui_design",
+              "status": "completed",
+              "label": "05 UI 设计"
+            },
+            {
+              "id": "development",
+              "status": "completed",
+              "label": "06 开发"
+            },
+            {
+              "id": "testing",
+              "status": "completed",
+              "label": "07 测试验收"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dashboard": {
+    "running_projects": 0,
+    "running_nodes": 0,
+    "blocked": 0,
+    "predicted_issues": 0
+  },
+  "capabilities": {
+    "status": "available",
+    "source": "static-demo",
+    "entries": []
+  },
+  "tasks": {
+    "DEMO-TASK": {
+      "task": {
+        "id": "DEMO-TASK",
+        "name": "AI Task Cockpit 静态演示",
+        "status": "completed",
+        "currentStage": "testing",
+        "viewStage": "competitor",
+        "reviewer": "master-controller-v1",
+        "review_round": 1,
+        "max_review_rounds": 3,
+        "decision": "approved",
+        "nodes": [
+          {
+            "id": "NODE-1",
+            "stage": "competitor",
+            "status": "completed"
+          },
+          {
+            "id": "NODE-2",
+            "stage": "requirement",
+            "status": "completed"
+          },
+          {
+            "id": "NODE-3",
+            "stage": "interaction",
+            "status": "completed"
+          },
+          {
+            "id": "NODE-4",
+            "stage": "prototype",
+            "status": "completed"
+          },
+          {
+            "id": "NODE-5",
+            "stage": "ui_design",
+            "status": "completed"
+          },
+          {
+            "id": "NODE-6",
+            "stage": "development",
+            "status": "completed"
+          },
+          {
+            "id": "NODE-7",
+            "stage": "testing",
+            "status": "completed"
+          }
+        ],
+        "events": [
+          {
+            "at": "2026-10-07T00:00:00.000Z",
+            "action": "node_started",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:01.000Z",
+            "action": "node_stdout",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:02.000Z",
+            "action": "artifact_created",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:03.000Z",
+            "action": "node_finished",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:04.000Z",
+            "action": "review_requested",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:05.000Z",
+            "action": "controller_called",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "master-controller-v1",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:06.000Z",
+            "action": "controller_decision_received",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:07.000Z",
+            "action": "review_applied",
+            "type": "runtime",
+            "status": "present",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          },
+          {
+            "at": "2026-10-07T00:00:08.000Z",
+            "action": "task_completed",
+            "type": "runtime",
+            "status": "completed",
+            "task_id": "DEMO-TASK",
+            "stage_id": "testing",
+            "node_id": "testing.overview",
+            "execution_id": "RUN-DEMO",
+            "agent_id": "static-demo",
+            "review_round": 1,
+            "max_review_rounds": 3
+          }
+        ],
+        "artifacts": {
+          "competitor": {
+            "stage": "competitor",
+            "card_id": "overview",
+            "path": "static/artifacts/competitor.md",
+            "local_path": "static/artifacts/competitor.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-competitor",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-competitor",
+            "exists": true,
+            "content": "# 分析概述\n\n统一左树到右详情，所有结论以真实 Artifact 和证据为准。"
+          },
+          "requirement": {
+            "stage": "requirement",
+            "card_id": "overview",
+            "path": "static/artifacts/requirement.md",
+            "local_path": "static/artifacts/requirement.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-requirement",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-requirement",
+            "exists": true,
+            "content": "# 需求总览\n\n目标是让真实 Node 执行、Artifact 证据和总控审核形成可回读闭环。"
+          },
+          "interaction": {
+            "stage": "interaction",
+            "card_id": "overview",
+            "path": "static/artifacts/interaction.md",
+            "local_path": "static/artifacts/interaction.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-interaction",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-interaction",
+            "exists": true,
+            "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+          },
+          "prototype": {
+            "stage": "prototype",
+            "card_id": "overview",
+            "path": "static/artifacts/prototype.md",
+            "local_path": "static/artifacts/prototype.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-prototype",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-prototype",
+            "exists": true,
+            "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+          },
+          "ui_design": {
+            "stage": "ui_design",
+            "card_id": "overview",
+            "path": "static/artifacts/ui_design.md",
+            "local_path": "static/artifacts/ui_design.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-ui_design",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-ui_design",
+            "exists": true,
+            "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+          },
+          "development": {
+            "stage": "development",
+            "card_id": "overview",
+            "path": "static/artifacts/development.md",
+            "local_path": "static/artifacts/development.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-development",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-development",
+            "exists": true,
+            "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+          },
+          "testing": {
+            "stage": "testing",
+            "card_id": "overview",
+            "path": "static/artifacts/testing.md",
+            "local_path": "static/artifacts/testing.md",
+            "kind": "document",
+            "status": "structured_baseline",
+            "artifact_id": "artifact-demo-testing",
+            "producer": "static-demo",
+            "fingerprint": "sha256:demo-testing",
+            "exists": true,
+            "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+          }
+        },
+        "artifact": {
+          "stage": "testing",
+          "card_id": "overview",
+          "path": "static/artifacts/testing.md",
+          "local_path": "static/artifacts/testing.md",
+          "kind": "document",
+          "status": "structured_baseline",
+          "artifact_id": "artifact-demo-testing",
+          "producer": "static-demo",
+          "fingerprint": "sha256:demo-testing",
+          "exists": true,
+          "content": "静态演示 Artifact：真实部署版本会由 Runtime 提供。"
+        },
+        "documents": {
+          "schema_version": "stage-document/v1",
+          "source": "static-demo",
+          "nodes": [
+            {
+              "id": "competitor.overview",
+              "stage_id": "competitor",
+              "section_id": "overview",
+              "title": "分析概述",
+              "parent_id": null,
+              "depth": 0,
+              "status": "pending",
+              "content_status": "structured_baseline",
+              "content": {
+                "summary": "# 分析概述\n\n统一左树到右详情，所有结论以真实 Artifact 和证据为准。"
+              },
+              "artifact_refs": [
+                "artifact-demo-competitor"
+              ],
+              "evidence_refs": [
+                "static/artifacts/competitor.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "competitor.subjects",
+              "stage_id": "competitor",
+              "section_id": "subjects",
+              "title": "研究对象",
+              "parent_id": "competitor.overview",
+              "depth": 1,
+              "status": "pending",
+              "content_status": "structured_baseline",
+              "content": {
+                "summary": "## 研究对象\n\n当前演示聚焦任务、阶段、节点、Artifact 与 Master Controller。"
+              },
+              "artifact_refs": [
+                "artifact-demo-competitor"
+              ],
+              "evidence_refs": [
+                "static/artifacts/competitor.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "competitor.findings",
+              "stage_id": "competitor",
+              "section_id": "findings",
+              "title": "核心发现",
+              "parent_id": "competitor.overview",
+              "depth": 1,
+              "status": "pending",
+              "content_status": "structured_baseline",
+              "content": {
+                "summary": "## 核心发现\n\n顶部展示阶段进度，左侧承担对象导航，右侧展示结构化内容。"
+              },
+              "artifact_refs": [
+                "artifact-demo-competitor"
+              ],
+              "evidence_refs": [
+                "static/artifacts/competitor.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "requirement.overview",
+              "stage_id": "requirement",
+              "section_id": "overview",
+              "title": "需求总览",
+              "parent_id": null,
+              "depth": 0,
+              "status": "pending",
+              "content_status": "structured_baseline",
+              "content": {
+                "summary": "# 需求总览\n\n目标是让真实 Node 执行、Artifact 证据和总控审核形成可回读闭环。"
+              },
+              "artifact_refs": [
+                "artifact-demo-requirement"
+              ],
+              "evidence_refs": [
+                "static/artifacts/requirement.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "requirement.goals-scope",
+              "stage_id": "requirement",
+              "section_id": "goals-scope",
+              "title": "目标与范围",
+              "parent_id": "requirement.overview",
+              "depth": 1,
+              "status": "pending",
+              "content_status": "structured_baseline",
+              "content": {
+                "summary": "## 目标与范围\n\n覆盖七阶段对象树、Runtime 事件、Artifact 证据和 Master Controller 决策。"
+              },
+              "artifact_refs": [
+                "artifact-demo-requirement"
+              ],
+              "evidence_refs": [
+                "static/artifacts/requirement.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "requirement.functional",
+              "stage_id": "requirement",
+              "section_id": "functional",
+              "title": "功能需求",
+              "parent_id": "requirement.overview",
+              "depth": 1,
+              "status": "pending",
+              "content_status": "structured_baseline",
+              "content": {
+                "summary": "## 功能需求\n\n每个节点返回结构化内容、Artifact 引用和验证状态。"
+              },
+              "artifact_refs": [
+                "artifact-demo-requirement"
+              ],
+              "evidence_refs": [
+                "static/artifacts/requirement.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "interaction.overview",
+              "stage_id": "interaction",
+              "section_id": "overview",
+              "title": "03 交互设计",
+              "parent_id": null,
+              "depth": 0,
+              "status": "completed",
+              "content_status": "ready",
+              "content": {
+                "summary": "静态演示内容"
+              },
+              "artifact_refs": [
+                "artifact-demo-interaction"
+              ],
+              "evidence_refs": [
+                "static/artifacts/interaction.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "prototype.overview",
+              "stage_id": "prototype",
+              "section_id": "overview",
+              "title": "04 原型",
+              "parent_id": null,
+              "depth": 0,
+              "status": "completed",
+              "content_status": "ready",
+              "content": {
+                "summary": "静态演示内容"
+              },
+              "artifact_refs": [
+                "artifact-demo-prototype"
+              ],
+              "evidence_refs": [
+                "static/artifacts/prototype.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "ui_design.overview",
+              "stage_id": "ui_design",
+              "section_id": "overview",
+              "title": "05 UI 设计",
+              "parent_id": null,
+              "depth": 0,
+              "status": "completed",
+              "content_status": "ready",
+              "content": {
+                "summary": "静态演示内容"
+              },
+              "artifact_refs": [
+                "artifact-demo-ui_design"
+              ],
+              "evidence_refs": [
+                "static/artifacts/ui_design.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "development.overview",
+              "stage_id": "development",
+              "section_id": "overview",
+              "title": "06 开发",
+              "parent_id": null,
+              "depth": 0,
+              "status": "completed",
+              "content_status": "ready",
+              "content": {
+                "summary": "静态演示内容"
+              },
+              "artifact_refs": [
+                "artifact-demo-development"
+              ],
+              "evidence_refs": [
+                "static/artifacts/development.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            },
+            {
+              "id": "testing.overview",
+              "stage_id": "testing",
+              "section_id": "overview",
+              "title": "07 测试验收",
+              "parent_id": null,
+              "depth": 0,
+              "status": "completed",
+              "content_status": "ready",
+              "content": {
+                "summary": "静态演示内容"
+              },
+              "artifact_refs": [
+                "artifact-demo-testing"
+              ],
+              "evidence_refs": [
+                "static/artifacts/testing.md"
+              ],
+              "validation": {
+                "status": "ready",
+                "missing": [],
+                "unknown": []
+              }
+            }
+          ]
+        },
+        "stages": [
+          {
+            "id": "competitor",
+            "status": "completed",
+            "label": "01 竞品分析"
+          },
+          {
+            "id": "requirement",
+            "status": "completed",
+            "label": "02 需求文档"
+          },
+          {
+            "id": "interaction",
+            "status": "completed",
+            "label": "03 交互设计"
+          },
+          {
+            "id": "prototype",
+            "status": "completed",
+            "label": "04 原型"
+          },
+          {
+            "id": "ui_design",
+            "status": "completed",
+            "label": "05 UI 设计"
+          },
+          {
+            "id": "development",
+            "status": "completed",
+            "label": "06 开发"
+          },
+          {
+            "id": "testing",
+            "status": "completed",
+            "label": "07 测试验收"
+          }
+        ]
+      },
+      "events": [
+        {
+          "at": "2026-10-07T00:00:00.000Z",
+          "action": "node_started",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:01.000Z",
+          "action": "node_stdout",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:02.000Z",
+          "action": "artifact_created",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:03.000Z",
+          "action": "node_finished",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:04.000Z",
+          "action": "review_requested",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:05.000Z",
+          "action": "controller_called",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "master-controller-v1",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:06.000Z",
+          "action": "controller_decision_received",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:07.000Z",
+          "action": "review_applied",
+          "type": "runtime",
+          "status": "present",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        },
+        {
+          "at": "2026-10-07T00:00:08.000Z",
+          "action": "task_completed",
+          "type": "runtime",
+          "status": "completed",
+          "task_id": "DEMO-TASK",
+          "stage_id": "testing",
+          "node_id": "testing.overview",
+          "execution_id": "RUN-DEMO",
+          "agent_id": "static-demo",
+          "review_round": 1,
+          "max_review_rounds": 3
+        }
+      ]
+    }
+  }
+}
